@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Robot Navigation Trials</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: 'Helvetica Neue', sans-serif;
+      padding: 40px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .section {
+      margin: 60px 0;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+
+    .description {
+      text-align: center;
+      color: #888;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .videos {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-container {
+      width: 45%;
+      min-width: 300px;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #333;
+    }
+
+    .label {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .play-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #222;
+      border: 1px solid #444;
+      color: #eee;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .play-btn:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Robot Navigation Trials: Surfboard Task</h1>
+
+  <!-- Successful Trial -->
+  <div class="section">
+    <h2>🟢 Successful Trial (Target: Surfboard)</h2>
+    <p class="description">The robot successfully identified the object and planned a path using semantic understanding and common-sense reasoning.</p>
+    
+    <div class="videos">
+      <div class="video-container">
+        <video id="success_robot" preload="metadata">
+          <source src="success_robot_view.mp4" type="video/mp4">
+        </video>
+        <div class="label">Robot View</div>
+      </div>
+      <div class="video-container">
+        <video id="success_topdown" preload="metadata">
+          <source src="success_topdown_view.mp4" type="video/mp4">
+        </video>
+        <div class="label">Top-Down View</div>
+      </div>
+    </div>
+    <button class="play-btn" onclick="playBoth('success_robot', 'success_topdown')">▶ Play Both Views</button>
+  </div>
+
+  <!-- Failed Trial -->
+  <div class="section">
+    <h2>🔴 Failed Trial (Target: Surfboard)</h2>
+    <p class="description">Here, the robot failed to find the object due to incorrect room prediction or lack of visibility.</p>
+
+    <div class="videos">
+      <div class="video-container">
+        <video id="fail_robot" preload="metadata">
+          <source src="fail_robot_view.mp4" type="video/mp4">
+        </video>
+        <div class="label">Robot View</div>
+      </div>
+      <div class="video-container">
+        <video id="fail_topdown" preload="metadata">
+          <source src="fail_topdown_view.mp4" type="video/mp4">
+        </video>
+        <div class="label">Top-Down View</div>
+      </div>
+    </div>
+    <button class="play-btn" onclick="playBoth('fail_robot', 'fail_topdown')">▶ Play Both Views</button>
+  </div>
+
+  <script>
+    function playBoth(id1, id2) {
+      const v1 = document.getElementById(id1);
+      const v2 = document.getElementById(id2);
+      v1.currentTime = 0;
+      v2.currentTime = 0;
+      v1.play();
+      v2.play();
+    }
+  </script>
+
+</body>
+</html>
